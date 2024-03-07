@@ -1,10 +1,13 @@
-// Define game grid size
+// Variables
+let grid = [];
 const GRID_SIZE = 4;
 
-// Initialize game grid
-let grid = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(0));
+// Initialize grid with zeros
+function initGrid() {
+    grid = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(0));
+}
 
-// Function to add a random tile (2 or 4) to an empty cell
+// Add random tile (2 or 4) to an empty cell
 function addRandomTile() {
     const availableCells = [];
     for (let i = 0; i < GRID_SIZE; i++) {
@@ -22,43 +25,39 @@ function addRandomTile() {
 
 // Function to initialize the game
 function initGame() {
-    grid = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(0));
+    initGrid();
     addRandomTile();
     addRandomTile();
-    // Update UI to reflect initial game state
-    // This involves updating the DOM to display the grid with tiles
+    updateGrid();
 }
 
-// Function to move tiles left
-function moveLeft() {
-    // Implement logic to move tiles left
+// Update the visual representation of the grid
+function updateGrid() {
+    const gridContainer = document.querySelector('.grid-container');
+    gridContainer.innerHTML = ''; // Clear the grid
+    for (let i = 0; i < GRID_SIZE; i++) {
+        for (let j = 0; j < GRID_SIZE; j++) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            if (grid[i][j] !== 0) {
+                tile.textContent = grid[i][j];
+            }
+            gridContainer.appendChild(tile);
+        }
+    }
 }
 
-// Function to move tiles right
-function moveRight() {
-    // Implement logic to move tiles right
-}
-
-// Function to move tiles up
-function moveUp() {
-    // Implement logic to move tiles up
-}
-
-// Function to move tiles down
-function moveDown() {
-    // Implement logic to move tiles down
-}
-
-// Event listeners for arrow keys to control game movements
-document.addEventListener('keydown', function (event) {
+// Handle key presses
+document.addEventListener('keydown', function(event) {
+    event.preventDefault();
     if (event.key === 'ArrowUp') {
-        moveUp();
+        // Handle up arrow key press
     } else if (event.key === 'ArrowDown') {
-        moveDown();
+        // Handle down arrow key press
     } else if (event.key === 'ArrowLeft') {
-        moveLeft();
+        // Handle left arrow key press
     } else if (event.key === 'ArrowRight') {
-        moveRight();
+        // Handle right arrow key press
     }
 });
 
