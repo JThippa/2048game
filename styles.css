@@ -1,11 +1,31 @@
-.container {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #FAF8EF;
-    border: 2px solid #BBADA0;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    background-color: #BBADA0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: #CDC1B4;
+    border-radius: 5px;
 }
